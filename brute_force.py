@@ -71,6 +71,7 @@ def first_iteration(list): #O(2^n); ~3s
     valid.sort(key=lambda x: x[2], reverse=True)
     print (len(valid))
     print(valid[0])
+    print("--- %s seconds ---" % (time.time() - start_time))
 
 first_iteration(raw)
 
