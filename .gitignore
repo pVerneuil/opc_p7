@@ -1,1 +1,4 @@
-test.py
+
+/docs
+/env
+__pycache__/
