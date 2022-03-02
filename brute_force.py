@@ -1,6 +1,7 @@
 import copy
 from utilities import *
 
+
 def find_all_subset(lst):
     list = copy.copy(lst)
     subset = []
@@ -19,7 +20,7 @@ def find_all_subset(lst):
 
 
 @get_time
-def first_iteration(list): #O(2^n); ~3s 
+def first_iteration(list):  # O(2^n); ~3s
 
     data = find_all_subset(list)
     valid = []
@@ -28,7 +29,6 @@ def first_iteration(list): #O(2^n); ~3s
         profit = temp[1]
         cost = temp[0]
         if cost <= 500:
-            valid.append([subset, cost,profit])
+            valid.append([subset, cost, profit])
     valid.sort(key=lambda x: x[2], reverse=True)
     return(valid[0])
-
