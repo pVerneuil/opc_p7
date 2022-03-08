@@ -1,19 +1,20 @@
 import numpy as np
 from utilities import get_time
 
-
+# https://www.youtube.com/watch?v=jDJM_foYGEU
+# https://www.youtube.com/watch?v=7SGzWtEUUL8
 @get_time
 def knapsack(actions, max_cost):
-
+    
     matrix = np.zeros((len(actions) + 1, max_cost + 1))
+    
     for i in range(len(actions) + 1):
         for j in range(max_cost + 1):
             if i == 0 or j == 0:
                 matrix[i, j] = 0
             elif actions[i - 1].price <= j:
                 matrix[i, j] = max(
-                    actions[i - 1].profit + matrix[i - 1,
-                                                   j - int(actions[i - 1].price)],
+                    actions[i - 1].profit + matrix[i - 1,j - int(actions[i - 1].price)],
                     matrix[i - 1, j]
                 )
             else:
@@ -30,10 +31,10 @@ def knapsack(actions, max_cost):
         if best_profit == matrix[i - 1, int(w)]:
             continue
         else:
+            wallet.append(actions[i - 1].name)
             best_profit = best_profit - actions[i - 1].profit
             w = w - actions[i - 1].price
-            wallet.append(actions[i - 1].name)
 
     return {
-        "profit": matrix[len(actions), max_cost],
+        "profit": matrix[len(actions), max_cost]/100,
         "wallet": wallet}
