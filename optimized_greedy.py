@@ -1,5 +1,7 @@
 from utilities import get_time
 
+
+@get_time
 def greedy(actions, max_cost):
     actions.sort( key =lambda x: x.profit_per_cent ,reverse = True )
     wallet = []
