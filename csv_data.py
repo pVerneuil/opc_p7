@@ -1,4 +1,5 @@
 import csv
+from decimal import Decimal
 
 def import_data_from_csv(filename):
     """import and clen data from a cvs file
@@ -14,8 +15,7 @@ def import_data_from_csv(filename):
         action_reader = csv.reader(dataset, delimiter=',')
         next(action_reader)
         for row in action_reader:
-            if row[0] and float(row[1]) and float(row[2]):
-                if float(row[1])>=0 and float(row[1])>=0 :
+            if row[0] and float(row[1])>0 and float(row[2])>0 :
                     row[0]=row[0][6:]
                     row[1]=float(row[1])
                     row[2]=float(row[2])

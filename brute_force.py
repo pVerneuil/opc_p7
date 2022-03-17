@@ -13,6 +13,7 @@ def find_all_subset(lst):
             new_subset.append(list.pop(0))
             subsets.append(new_subset)
             remain_list = copy.copy(list)
+            
             actual_function(remain_list, new_subset)
 
     actual_function(list, subset)

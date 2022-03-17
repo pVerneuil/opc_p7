@@ -1,8 +1,10 @@
 import numpy as np
 from brute_force import *
 from action import *
-from optimized import *
+from optimized_KS import *
+from optimized_gready import *
 from csv_data import *
+from utilities import print_result
 
 raw = [
     [1, 20, 5],
@@ -26,22 +28,21 @@ raw = [
     [19, 24, 21],
     [20, 114, 18]]
 
-# brute force
+# !brute force
 # print(first_iteration(raw))
 
-# optimised
+#! optimised knapsack
 
-ActionSet.convert_raw_data_to_cent(raw)
-
-set_test = ActionSet(raw)
-
-# set_test.instanciate()
-# print(knapsack(set_test.actions_obj, 50000))
-
-data_raw = import_data_from_csv('dataset1.csv')
+# data_raw = import_data_from_csv('dataset1.csv')
 # ActionSet.convert_raw_data_to_cent(data_raw)
+# data = ActionSet(data_raw)
+# data.instanciate()
+# result = knapsack(data.actions_obj, 50000)
+# print_result(result,True)
+
+
+#!  optimised gready
+data_raw = import_data_from_csv('dataset2.csv')
 data = ActionSet(data_raw)
 data.instanciate()
-result = knapsack(data.actions_obj, 500)
-print(result)
-
+print_result(greedy(data.actions_obj,500))

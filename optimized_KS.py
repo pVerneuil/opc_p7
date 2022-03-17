@@ -1,8 +1,7 @@
+
 import numpy as np
 from utilities import get_time
 
-# https://www.youtube.com/watch?v=jDJM_foYGEU
-# https://www.youtube.com/watch?v=7SGzWtEUUL8
 @get_time
 def knapsack(actions, max_cost):
     
@@ -14,12 +13,11 @@ def knapsack(actions, max_cost):
                 matrix[i, j] = 0
             elif actions[i - 1].price <= j:
                 matrix[i, j] = max(
-                    actions[i - 1].profit + matrix[i - 1,j - int(actions[i - 1].price)],
+                    actions[i - 1].profit_rounded + matrix[i - 1, j - int(actions[i - 1].price)],
                     matrix[i - 1, j]
                 )
             else:
                 matrix[i, j] = matrix[i - 1, j]
-
     best_profit = matrix[len(actions), max_cost]
 
     wallet = []
@@ -31,10 +29,10 @@ def knapsack(actions, max_cost):
         if best_profit == matrix[i - 1, int(w)]:
             continue
         else:
-            wallet.append(actions[i - 1].name)
-            best_profit = best_profit - actions[i - 1].profit
-            w = w - actions[i - 1].price
-
+            wallet.append(actions[i - 1])
+            best_profit -= actions[i - 1].profit_rounded
+            w -= actions[i - 1].price
     return {
-        "profit": matrix[len(actions), max_cost]/100,
-        "wallet": wallet}
+        "profit": matrix[len(actions), max_cost],
+        "wallet": wallet
+        }
