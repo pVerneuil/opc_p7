@@ -13,7 +13,7 @@ def find_all_subset(lst):
             new_subset.append(list.pop(0))
             subsets.append(new_subset)
             remain_list = copy.copy(list)
-            
+
             actual_function(remain_list, new_subset)
 
     actual_function(list, subset)
@@ -32,4 +32,4 @@ def first_iteration(list):  # O(2^n); ~3s
         if cost <= 500:
             valid.append([subset, cost, profit])
     valid.sort(key=lambda x: x[2], reverse=True)
-    return(valid[0])
+    return valid[0]
